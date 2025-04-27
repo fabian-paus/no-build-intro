@@ -2,13 +2,12 @@ name: Run Scripts
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,13 +15,12 @@ jobs:
         node-version: [22.x]
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: cd ts
-    - run: npm ci
-    - run: npm run compile-and-run
-    - run: npm run strip-and-run
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm run -w ts compile-and-run
+      - run: npm run -w ts strip-and-run
+      - run: npm run -w jsdoc run
