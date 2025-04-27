@@ -1,0 +1,16 @@
+{
+  "name": "ts",
+  "version": "1.0.0",
+  "description": "TypeScript scripts to illustrate No Build",
+  "main": "index.js",
+  "scripts": {
+    "compile-and-run": "tsc --diagnostics && node ./out/index.mjs",
+    "strip-and-run": "node --experimental-strip-types ./index.mts"
+  },
+  "author": "Fabian Paus",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.15.2",
+    "typescript": "^5.8.3"
+  }
+}
