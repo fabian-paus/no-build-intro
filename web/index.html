@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Page</title>
+
+    <script type="importmap">
+        {
+          "imports": {
+            "weather": "./js/weather.mjs"
+          }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to EWW (Example Weather Website)!</h1>
+    </header>
+    <main>
+        <p>This is a simple HTML template. You can customize it as needed.</p>
+
+        <script type="module">
+            import { getWeather } from 'weather';
+
+            async function displayWeather() {
+                const weatherData = await getWeather(20, 10);
+                console.log(weatherData); 
+                document.body.insertAdjacentHTML('beforeend', `<p>Current Weather in New York: ${weatherData.current.temperature_2m}</p>`);
+            }
+
+            displayWeather();
+        </script>
+    </main>
+    <footer>
+        <p>&copy; 2025 My Website</p>
+    </footer>
+</body>
+</html>
