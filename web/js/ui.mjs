@@ -65,13 +65,17 @@ function updateWeatherData(location) {
     .then((weatherData) => {
       console.log("Weather data:", weatherData);
       const weatherDisplay = document.getElementById("weather-display");
+      const temperature = weatherData.current.temperature_2m;
+      const temperatureColor =
+        temperature > 25 ? "red" : temperature < 10 ? "blue" : "black";
+
       weatherDisplay.innerHTML = `
-        <h2>Weather in ${location.name}</h2>
-        <p>Temperature: ${weatherData.current.temperature_2m}°C</p>
-        <p>Elevation: ${location.elevation} m</p>
-        <p>Latitude: ${location.latitude}</p>
-        <p>Longitude: ${location.longitude}</p>
-      `;
+      <h2>Weather in ${location.name}</h2>
+      <p style="color: ${temperatureColor};">Temperature: ${temperature}°C</p>
+      <p>Elevation: ${location.elevation} m</p>
+      <p>Latitude: ${location.latitude}</p>
+      <p>Longitude: ${location.longitude}</p>
+    `;
     })
     .catch((error) => {
       console.error("Error fetching weather data:", error);
