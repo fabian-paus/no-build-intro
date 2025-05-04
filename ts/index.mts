@@ -6,14 +6,6 @@
 import assert from "node:assert";
 import { writeFile } from "node:fs/promises";
 
-interface WeatherData {
-  latitude: number;
-  longitude: number;
-  elevation: number;
-  current: CurrentWeather;
-  hourly: WeatherSeries;
-}
-
 interface CurrentWeather {
   time: string;
   interval: number;
@@ -25,10 +17,19 @@ interface WeatherSeries {
   temperature_2m: number[];
 }
 
+interface WeatherData {
+  latitude: number;
+  longitude: number;
+  elevation: number;
+  current: CurrentWeather;
+  hourly: WeatherSeries;
+}
+
 async function getWeather(
   latitude: number,
   longitude: number
 ): Promise<WeatherData> {
+  
   const url = new URL("https://api.open-meteo.com/v1/forecast");
   url.searchParams.append("latitude", latitude.toFixed(3));
   url.searchParams.append("longitude", longitude.toFixed(3));

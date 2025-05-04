@@ -241,6 +241,7 @@ Since Node.js needs to transform the source code, the simple but beatiful white 
 Enabling this option also enables source map generation and makes debugging a bit more tricky.
 
 ```sh
+# Transform TypeScript features before execution
 node --experimental-transform-types example.ts
 ```
 
@@ -251,7 +252,10 @@ If you can avoid TypeScript specific features like enums and namespaces, the --e
 You can run your TypeScript without a build step and even start debugging it without any source map shenanigans.
 Starting with Node.js 23.6.0 you do not even need to specify the flag anymore. It just works out of the box!
 
-```sh
+```bash
+# With Node.js < 23.6.0
+node --experimental-strip-types example.ts
+
 # With Node.js >= 23.6.0
 node example.ts
 ```

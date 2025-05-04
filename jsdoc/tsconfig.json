@@ -4,9 +4,10 @@
     "module": "ES2022",
     "moduleResolution": "node",
 
-    // Enable checking Javascript and do not emit anything
+    // Enable type checking for Javascript
     "allowJs": true,
     "checkJs": true,
+    // We do not need any output
     "noEmit": true,
 
     "forceConsistentCasingInFileNames": true,
