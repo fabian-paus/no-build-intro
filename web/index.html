@@ -8,7 +8,9 @@
     <script type="importmap">
         {
           "imports": {
-            "weather": "./js/weather.mjs"
+            "location": "./js/location.mjs",
+            "weather": "./js/weather.mjs",
+            "ui": "./js/ui.mjs"
           }
         }
     </script>
@@ -45,22 +47,23 @@
         <h1>Welcome to EWW (Example Weather Website)!</h1>
     </header>
     <main>
-        <p>This is a simple HTML template. You can customize it as needed.</p>
+        <h2>Choose a Location</h2>
+        <input type="text" id="location-search" placeholder="Enter a location" />
+        <select id="location">
+        </select>
 
-        <script type="module">
-            import { getWeather } from 'weather';
-
-            async function displayWeather() {
-                const weatherData = await getWeather(20, 10);
-                console.log(weatherData); 
-                document.body.insertAdjacentHTML('beforeend', `<p>Current Weather in New York: ${weatherData.current.temperature_2m}</p>`);
-            }
-
-            displayWeather();
-        </script>
+        <div id="weather-display">
+            <h2>Weather Information</h2>
+            <p>Weather data will be displayed here.</p>
+        </div>
     </main>
     <footer>
-        <p>&copy; 2025 My Website</p>
+        <p>&copy; 2025 Fabian Paus</p>
     </footer>
+
+    <script type="module">
+        import { initUI } from 'ui';
+        initUI();
+    </script>
 </body>
 </html>

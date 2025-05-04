@@ -34,8 +34,8 @@
  * @param {string} query
  * @returns {Promise<LocationResponse>}
  */
-async function searchLocation(query) {
-  const url = new URL("https://api.open-meteo.com/v1/search");
+export async function searchLocation(query) {
+  const url = new URL("https://geocoding-api.open-meteo.com/v1/search");
   url.searchParams.append("name", query);
   url.searchParams.append("count", "10");
   url.searchParams.append("language", "en");
